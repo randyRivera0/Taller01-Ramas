@@ -26,15 +26,15 @@ public class PrimaryController {
     private ImageView ivCancion;
     @FXML
     private Label lblInfo;
-    
+
     private static ArrayList<Cancion> listaCanciones;
 
     public void initialize() {
         listaCanciones = Cancion.leerCanciones();
-        Collections.sort(listaCanciones);
-        for (Cancion c : listaCanciones ) {
+        Collections.sort(listaCanciones, Collections.reverseOrder());
+        for (Cancion c : listaCanciones) {
 
-            HBox hb = new HBox(10);//hbox para ubicar info de cada cancion
+            HBox hb = new HBox(10);// hbox para ubicar info de cada cancion
             Label lbp = new Label(c.getPosActual() + "");
             lbp.setStyle("-fx-font-weight: bold;-fx-font-size: 40;");
             ImageView iv = new ImageView();
@@ -45,17 +45,16 @@ public class PrimaryController {
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
             }
-            Label lbT = new Label(c.getTitulo() + " \n" + c.getCantante());//titulo y cantante
+            Label lbT = new Label(c.getCantante() + " \n" + c.getTitulo() );//titulo y cantante
             lbT.setStyle("-fx-font-weight: bold;-fx-font-size: 14;");
 
-            hb.getChildren().addAll(lbp, iv, lbT);//agregar al hbox
+            hb.getChildren().addAll(lbp, iv, lbT);// agregar al hbox
 
-            hb.setOnMouseClicked(eh -> mostrarHistorial(c));//establecer el evento del click
-            vbTop10.getChildren().add(hb);//agregar al vbox
+            hb.setOnMouseClicked(eh -> mostrarHistorial(c));// establecer el evento del click
+            vbTop10.getChildren().add(hb);// agregar al vbox
 
         }
     }
-
 
     private void mostrarHistorial(Cancion c) {
         lblTitulo.setText(c.getTitulo());
@@ -69,27 +68,27 @@ public class PrimaryController {
         }
 
         lblInfo.setText("Posición anterior: " + c.getPosPrevia() + "\n Semanas en Top: " + c.getSemanas());
- 
+
         System.out.println(c.getHistorialPos());
-        //la actualización del historial se realiza en un hilo
+        // la actualización del historial se realiza en un hilo
         Thread th = new Thread(() -> {
 
             int prev = -1;
             for (int p : c.getHistorialPos()) {
-                System.out.println("posicion"+p);
+                System.out.println("posicion" + p);
                 String ruta = "right.PNG";
                 if (prev == -1) {
-                    //imagen de ingreso
+                    // imagen de ingreso
                     ruta = "right.PNG";
-                   
+
                     prev = p;
                 } else if (p <= prev) {
-                   
-                    //imagen de subida
+
+                    // imagen de subida
                     ruta = "up.PNG";
                 } else {
-                    //imagen de bajada
-                   
+                    // imagen de bajada
+
                     ruta = "down.PNG";
                 }
                 Label lbP = new Label(p + "");
@@ -103,10 +102,10 @@ public class PrimaryController {
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
-                //actualizar el hbox
+                // actualizar el hbox
                 Platform.runLater(() -> hbHistorial.getChildren().setAll(iv, lbP));
 
-                //esperar 1 segundo
+                // esperar 1 segundo
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
