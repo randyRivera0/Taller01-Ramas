@@ -35,8 +35,8 @@ public class PrimaryController {
         for (Cancion c : listaCanciones ) {
 
             HBox hb = new HBox(10);//hbox para ubicar info de cada cancion
-            Label lbp = new Label(c.getPosActual() + "");
-            lbp.setStyle("-fx-font-weight: bold;-fx-font-size: 40;");
+            Label lbp = new Label(aRomano(c.getPosActual()) + "");
+            lbp.setStyle("-fx-font-style: italic;-fx-font-size: 20; -fx-text-fill: blue;-fx-font-weight: bold");
             ImageView iv = new ImageView();
             try {
                 Image img = new Image(new FileInputStream("img/" + c.getImagen()), 50, 50, true, true);
@@ -53,6 +53,42 @@ public class PrimaryController {
             hb.setOnMouseClicked(eh -> mostrarHistorial(c));//establecer el evento del click
             vbTop10.getChildren().add(hb);//agregar al vbox
 
+        }
+    }
+    
+    public String aRomano(int num){
+        if (num==1){
+            return "I";
+        }
+        if (num==2){
+            return "II";
+        }
+        if (num==3){
+            return "III";
+        }
+        if (num==4){
+            return "IV";
+        }
+        if (num==5){
+            return "V";
+        }
+        if (num==6){
+            return "VI";
+        }
+        if (num==7){
+            return "VII";
+        }
+        if (num==8){
+            return "VIII";
+        }
+        if(num==9){
+            return "IX";
+        }
+        if (num==10){
+            return "X";
+        }
+        else{
+            return "No se pudo convertir a número romano";
         }
     }
 
@@ -92,7 +128,7 @@ public class PrimaryController {
                    
                     ruta = "down.PNG";
                 }
-                Label lbP = new Label(p + "");
+                Label lbP = new Label(aRomano(p) + "");
                 lbP.setStyle("-fx-font-weight: bold;-fx-font-size: 30;");
                 prev = p;
                 ImageView iv = new ImageView();
