@@ -19,13 +19,14 @@ public class Cancion implements Comparable<Cancion> {
     private String cantante;
 
     private String imagen;
-    private int posActual; //la posicion actual en el ranking
+    private int posActual; // la posicion actual en el ranking
     private int posPrevia;
 
     private int semanas;
-    private List<Integer> historialPos; //lista con todas las posiciones que ha tenido en el ranking
+    private List<Integer> historialPos; // lista con todas las posiciones que ha tenido en el ranking
 
-    public Cancion(String titulo, String cantante, String imagen, int posActual, int posPrevia, int semanas, List<Integer> historialPos) {
+    public Cancion(String titulo, String cantante, String imagen, int posActual, int posPrevia, int semanas,
+            List<Integer> historialPos) {
         this.titulo = titulo;
         this.cantante = cantante;
         this.imagen = imagen;
@@ -56,7 +57,6 @@ public class Cancion implements Comparable<Cancion> {
         return posPrevia;
     }
 
- 
     public int getSemanas() {
         return semanas;
     }
@@ -67,17 +67,17 @@ public class Cancion implements Comparable<Cancion> {
 
     public static ArrayList<Cancion> leerCanciones() {
         ArrayList<Cancion> lista = new ArrayList<>();
-
-        try ( BufferedReader br = new BufferedReader(new FileReader("top10.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("top10.csv"))) {
             String linea = "";
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(";");
                 String[] historial = datos[6].split("-");
                 ArrayList<Integer> listaHistorial = new ArrayList<>();
-                for (String h:historial){
+                for (String h : historial) {
                     listaHistorial.add(Integer.valueOf(h));
                 }
-                Cancion c = new Cancion(datos[0], datos[1], datos[2], Integer.valueOf(datos[3]), Integer.valueOf(datos[4]), Integer.valueOf(datos[5]),  listaHistorial);
+                Cancion c = new Cancion(datos[0], datos[1], datos[2], Integer.valueOf(datos[3]),
+                        Integer.valueOf(datos[4]), Integer.valueOf(datos[5]), listaHistorial);
                 lista.add(c);
             }
         } catch (FileNotFoundException ex) {
@@ -86,12 +86,18 @@ public class Cancion implements Comparable<Cancion> {
             ex.printStackTrace();
         }
 
-        /*  String s = "20,4,3,2,1,1,1,1,1,1,1,1";
-        Cancion c = new Cancion("Anti-Hero","TayLor Swift","antihero.jpg",1,1,1,12,new ArrayList<>(Arrays.asList(s.split(","))));
-        lista.add(c);
-        s = "15,10,7,3,2,1,2,3";
-        Cancion c2 = new Cancion("Unholy","Sam Smith & Kim Petras","unholy.jpg",3,2,1,8,new ArrayList<>(Arrays.asList(s.split(","))));
-        lista.add(c2);*/
+        /*
+         * String s = "20,4,3,2,1,1,1,1,1,1,1,1";
+         * Cancion c = new
+         * Cancion("Anti-Hero","TayLor Swift","antihero.jpg",1,1,1,12,new
+         * ArrayList<>(Arrays.asList(s.split(","))));
+         * lista.add(c);
+         * s = "15,10,7,3,2,1,2,3";
+         * Cancion c2 = new
+         * Cancion("Unholy","Sam Smith & Kim Petras","unholy.jpg",3,2,1,8,new
+         * ArrayList<>(Arrays.asList(s.split(","))));
+         * lista.add(c2);
+         */
         return lista;
     }
 
