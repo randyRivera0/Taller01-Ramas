@@ -1,15 +1,17 @@
 # Taller01-Ramas
 
 ### Lider - Randy Rivera
-Captura: 
-
-![Captura titulo](blob/cambioTitulo.png)
 
 Se cambio el titulo a "Grupo 2 Top 10 Canciones"
 
 En `primary.fxml, linea 40`
 
 `<Label text="Grupo 2 Top 10 Canciones" BorderPane.alignment="CENTER">`
+
+Captura: 
+
+![Captura titulo](blob/Lider.png)
+
 
 ### Integrante 2 - Juan Fernandez
 Se cambió el orden de las 10 canciones principales en forma descendiente, usando estos comandos:
@@ -37,10 +39,13 @@ Captura:
 
 ### Integrante 4 - Dhamar Quishpe 
 
-Se cambió los números tradicionales por números romanos y se añadió color. 
-En `PrimaryController.java, linea 38, 59-93 y 157`
+Se cambió los números tradicionales por números romanos y se añadió color.
+
+En `PrimaryController.java, linea 38`
 
 `Label lbp = new Label(aRomano(c.getPosActual()) + "");`
+
+En `PrimaryController.java, linea 59-93`
 
 ```
 public String aRomano(int num){
@@ -81,19 +86,11 @@ public String aRomano(int num){
     
 ```
 
-
-
+En `PrimaryController.java, linea 157`
 
 `Label lbP = new Label(aRomano(p) + "");`
 
 
-Captura de pantalla: 
+Captura:
 
 ![Captura estudiante 4](blob/Estudiante4.png) 
-
-
-
-
-
-
-
