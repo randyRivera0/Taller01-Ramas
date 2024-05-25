@@ -3,7 +3,7 @@
 ### Lider - Randy Rivera
 Captura: 
 
-![Captura titulo](blob\cambioTitulo.png)
+![Captura titulo](blob/cambioTitulo.png)
 
 Se cambio el titulo a "Grupo 2 Top 10 Canciones"
 
@@ -35,13 +35,13 @@ Captura:
 ![Captura estudiante 3](blob/Estudiante3.jpg)
 
 
-Integrante 4 - Dhamar Quishpe 
+### Integrante 4 - Dhamar Quishpe 
 
-Se cambió los números por números romanos y se añadió color. 
+Se cambió los números tradicionales por números romanos y se añadió color. 
 
-Captura de pantalla 
+Captura de pantalla: 
  
-!["Modificaciones"](Captura de pantalla Quishpe.png)
+!["Modificaciones"](blob/Captura de pantalla Quishpe.png)
 
 
 
